@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_horizon_app/utils/my_color.dart';
 
 class ButtomNavigationBarItem extends StatefulWidget {
 
@@ -40,7 +41,7 @@ class _ButtomNavigationBarItemState extends State<ButtomNavigationBarItem> {
                     width: 24.w,
                     height: 24.h,
                   ),
-                  Text(item.title,style: TextStyle(fontSize: 12.sp,color: index == item.index ? Colors.purpleAccent : Colors.black),)
+                  Text(item.title,style: TextStyle(fontSize: 12.sp,color: index == item.index ? MyColor.bottomNavigationBarActiveColor : Colors.black),)
                 ]
               )
             )

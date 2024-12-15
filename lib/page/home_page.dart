@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_horizon_app/widget/list_view_vertical.dart';
 
 import '../widget/banner.dart';
 import '../widget/buttom.dart';
@@ -102,9 +103,9 @@ class _homePageState extends State<homePage> {
                               // 轮播图
                               SizedBox(height: 10.h),
                               CarouseSliderWidget(bannerList),
-                              ListViewHorizonWidget(recommendList, "推荐"),
-                              ListViewHorizonWidget(recommendList, "推荐"),
-                              ListViewHorizonWidget(recommendList, "推荐"),
+                              ListViewHorizonWidget(recommendList, "Recommend"),
+                              SizedBox(height: 10.h,),
+                              ListViewVerticalWidget(recommendList,"Top Searcher"),
                               SizedBox(height: 70.h),
                             ],
                           ),

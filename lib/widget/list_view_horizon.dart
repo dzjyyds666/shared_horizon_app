@@ -9,29 +9,28 @@ class ListViewHorizonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(_itemList);
     return Container(
-      padding: EdgeInsets.only(left: 20.w),
+      padding: EdgeInsets.only(left: 20.w, right: 20.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(title),
-                Expanded(child: SizedBox()),
+                Text(title,style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.bold),),
+                const Expanded(child: SizedBox()),
                 TextButton(
                   onPressed: () {},
                   child: Row(
                     children: [
                       Text(
-                        '更多',
+                        'see all',
                         style:
-                            TextStyle(fontSize: 12.sp, color: Colors.lightBlue),
+                            TextStyle(fontSize: 12.sp, color: Colors.lightBlue,),
                       ),
-                      //const Expanded(child: SizedBox()),
+                      SizedBox(width: 5.w),
                       Icon(
                         Icons.arrow_circle_right,
                         size: 14.w,
