@@ -3,16 +3,24 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CarouseSliderWidget extends StatelessWidget {
+  final List<String> bannerList;
+  final int? width;
+  final int? height;
+  final bool? autoPlay;
 
-  final List<String> _bannerList;
-  const CarouseSliderWidget(this._bannerList,{super.key});
+  const CarouseSliderWidget(
+      {required this.bannerList,
+      this.width,
+      this.height,
+      this.autoPlay,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
       items: _bannerListWidget(),
       options: CarouselOptions(
-        autoPlay: true,
+        autoPlay: autoPlay ?? true,
         height: 200.h,
       ),
     );
@@ -20,14 +28,14 @@ class CarouseSliderWidget extends StatelessWidget {
 
   List<Widget>? _bannerListWidget() {
     List<Widget> list = [];
-    for (var i = 0; i < _bannerList.length; i++) {
+    for (var i = 0; i < bannerList.length; i++) {
       list.add(Container(
         margin: EdgeInsets.all(5.0),
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(10.w)),
           child: Container(
-            child:
-                Image.network(_bannerList[i], fit: BoxFit.cover, width: 300.w),
+            child: Image.network(bannerList[i],
+                fit: BoxFit.cover, width: (width ?? 300).w, height: height?.h),
           ),
         ),
       ));

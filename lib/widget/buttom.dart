@@ -29,9 +29,11 @@ class _ButtomNavigationBarItemState extends State<ButtomNavigationBarItem> {
           for(var item in widget.list)
             GestureDetector(
               onTap: () {
+
                 setState(() {
                   index = item.index;
                 });
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>item.page));
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -56,6 +58,7 @@ class NavigationBarItem {
   String activeIcon;
   String title;
   int index;
+  Widget page;
 
-  NavigationBarItem(this.icon, this.title, this.index,this.activeIcon);
+  NavigationBarItem(this.icon, this.title, this.index,this.activeIcon, this.page);
 }

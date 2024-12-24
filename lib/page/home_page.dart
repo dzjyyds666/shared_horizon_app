@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_horizon_app/page/login.dart';
+import 'package:shared_horizon_app/page/search_page.dart';
+import 'package:shared_horizon_app/widget/audioplay.dart';
 import 'package:shared_horizon_app/widget/list_view_vertical.dart';
 
 import '../widget/banner.dart';
@@ -40,86 +43,108 @@ class _homePageState extends State<homePage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Material(
-            child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                color: CupertinoColors.white,
-                child: Stack(
-                  children: [
-                    ListView(
-                      children: [
-                        Container(
-                          child: Column(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.only(
-                                    top: 30.h,
-                                    left: 30.w,
-                                    right: 30.w,
-                                    bottom: 30.h),
-                                width: MediaQuery.of(context).size.width,
-                                child: Row(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(30),
-                                      child: Image.network(
-                                        "https://dthezntil550i.cloudfront.net/p4/latest/p42102052243097410008650553/1280_960/12bc8bc0-2186-48fb-b432-6c011a559ec0.png",
-                                        height: 50,
-                                        width: 50,
-                                      ),
-                                    ),
-                                    SizedBox(width: 20.w),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Hi,Aaron!',
-                                          style: TextStyle(
-                                              fontSize: 20.w,
-                                              fontWeight: FontWeight.bold),
+    return Scaffold(
+      backgroundColor: CupertinoColors.white,
+      body: SafeArea(
+          child: Material(
+              child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  color: CupertinoColors.white,
+                  child: Stack(
+                    children: [
+                      ListView(
+                        children: [
+                          Container(
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(
+                                      top: 30.h,
+                                      left: 30.w,
+                                      right: 30.w,
+                                      bottom: 30.h),
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Row(
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(30),
+                                        child: Image.network(
+                                          "https://dthezntil550i.cloudfront.net/p4/latest/p42102052243097410008650553/1280_960/12bc8bc0-2186-48fb-b432-6c011a559ec0.png",
+                                          height: 50,
+                                          width: 50,
                                         ),
-                                        Text(
-                                          'Welcom to ShareHorizen',
-                                          style: TextStyle(fontSize: 12.w),
-                                        )
-                                      ],
-                                    ),
-                                    Expanded(child: SizedBox()),
-                                    Icon(
-                                      Icons.search,
-                                      size: 28.w,
-                                    ),
-                                    SizedBox(width: 10.w),
-                                    Icon(
-                                      Icons.tips_and_updates_outlined,
-                                      size: 28.w,
-                                    )
-                                  ],
+                                      ),
+                                      SizedBox(width: 20.w),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Hi,Aaron!',
+                                            style: TextStyle(
+                                                fontSize: 20.w,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                            'Welcom to ShareHorizen',
+                                            style: TextStyle(fontSize: 12.w),
+                                          )
+                                        ],
+                                      ),
+                                      Expanded(child: SizedBox()),
+                                      Icon(
+                                        Icons.search,
+                                        size: 28.w,
+                                      ),
+                                      SizedBox(width: 10.w),
+                                      Icon(
+                                        Icons.tips_and_updates_outlined,
+                                        size: 28.w,
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              // 轮播图
-                              SizedBox(height: 10.h),
-                              CarouseSliderWidget(bannerList),
-                              ListViewHorizonWidget(recommendList, "Recommend"),
-                              SizedBox(height: 10.h,),
-                              ListViewVerticalWidget(recommendList,"Top Searcher"),
-                              SizedBox(height: 70.h),
-                            ],
+                                // 轮播图
+                                SizedBox(height: 10.h),
+                                CarouseSliderWidget(bannerList: bannerList,),
+                                ListViewHorizonWidget(
+                                    recommendList, "Recommend"),
+                                SizedBox(
+                                  height: 10.h,
+                                ),
+                                ListViewVerticalWidget(
+                                    recommendList, "Top Searcher"),
+                                SizedBox(height: 70.h),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Positioned(
+                        ],
+                      ),
+                      Positioned(
                         bottom: 0,
-                        child:ButtomNavigationBarItem(list: [
-                          NavigationBarItem("assets/img/shouye.svg", "首页", 0, "assets/img/shouye-2.svg"),
-                          NavigationBarItem("assets/img/sousuo.svg", "搜索", 1, "assets/img/sousuo-2.svg"),
-                        ],),
-                    )
-                  ],
-                ))));
+                        child: ButtomNavigationBarItem(
+                          list: [
+                            NavigationBarItem("assets/img/shouye.svg", "首页", 0,
+                                "assets/img/shouye-2.svg", homePage()),
+                            NavigationBarItem("assets/img/sousuo.svg", "搜索", 1,
+                                "assets/img/sousuo-2.svg", searchPage()),
+                            NavigationBarItem("assets/img/log-in.svg", "登录", 2,
+                                "assets/img/log-in-2.svg", login()),
+                            NavigationBarItem(
+                                "assets/img/yinle-2.svg",
+                                "音乐",
+                                3,
+                                "assets/img/yinle.svg",
+                                audio_player(
+                                  audioUrl:
+                                      "https://cos-console-dev.yuni.vip/v1/cos/file/v3-JFRHUGSEUA0GLII9QS8FQSB1L1EQDBR0L1EAQBR4L1UE9BB6QDHESBRFLDGE9GEDQR0A5HEDSH?ApiKey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc2NDM4MzgsInVpZCI6ImNzX21pYmViTlk4MzAiLCJzaWQiOiJmYjZhYTFjYjJlZTliMGVhOWY4YzZlMTVjYTI2NzA2NDE2NzQyOTgyOTAwNWRmOGZmYWUyODc0YjRlMzlhZWM1In0.yjiCQat5uDrr2B7hGeWyjerHcUgKEOHxKA2RqVdWLA0&partid=0&dirid=哈哈哈&storage_id=oss-cn-beijing",
+                                )),
+                          ],
+                        ),
+                      )
+                    ],
+                  )))),
+    );
   }
 }

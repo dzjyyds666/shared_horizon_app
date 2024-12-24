@@ -18,6 +18,8 @@ dependencies:
   carousel_slider: ^5.0.0
   flutter_svg: ^2.0.16
   shared_preferences: ^2.3.2
+  just_audio: ^0.9.42
+  audio_session: ^0.1.23
 
 dev_dependencies:
 
@@ -35,6 +37,10 @@ flutter:
     - assets/img/sousuo.svg
     - assets/img/sousuo-2.svg
     - assets/img/icon.png
+    - assets/img/log-in-2.svg
+    - assets/img/log-in.svg
+    - assets/img/yinle.svg
+    - assets/img/yinle-2.svg
 
   uses-material-design: true
 
